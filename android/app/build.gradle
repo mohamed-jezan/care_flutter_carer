@@ -1,0 +1,73 @@
+plugins {
+    id "com.android.application"
+    id "org.jetbrains.kotlin.android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.call_care"
+    compileSdk = 35
+    ndkVersion = flutter.ndkVersion
+
+    defaultConfig {
+        applicationId = "com.example.call_care"
+        minSdk = 21
+        targetSdk = 35
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+
+    buildTypes {
+        debug {
+        }
+        release {
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+task copyApkToBuild(type: Copy) {
+    from 'build/outputs/flutter-apk/'
+    into '../../../build/app/outputs/flutter-apk/'
+    include '*.apk'
+    doFirst {
+        new File(project.rootProject.projectDir, 'build/app/outputs/flutter-apk/').mkdirs()
+    }
+}
+
+afterEvaluate {
+    tasks.named('assembleRelease').configure {
+        finalizedBy copyApkToBuild
+    }
+}
+
+project.tasks.whenTaskAdded { task ->
+    if (task.name == 'copyApk') {
+        task.into '../../../build/app/outputs/flutter-apk/'
+        task.doFirst {
+            file('../../../build/app/outputs/flutter-apk/').mkdirs()
+        }
+    }
+}
