@@ -10,8 +10,8 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Center(
+    return const Scaffold(
+      body: Center(
         child: Text('No settings available at the moment.'),
       ),
     );

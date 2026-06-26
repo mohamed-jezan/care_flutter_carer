@@ -75,14 +75,14 @@ class _StartupPageState extends State<StartupPage> {
 
     } else if (status == "active") {
       _goTo(
-        HomeScreen(
+        const HomeScreen(
           
         ),
       );
 
     } else if (status == "awaiting_verification"){
       _goTo(
-        AwaitingVerificationPage(),
+        const AwaitingVerificationPage(),
       );
     }else {
       _goTo(const SignInPage());
@@ -106,8 +106,8 @@ class _StartupPageState extends State<StartupPage> {
       body: Center(
   child: Column(
     mainAxisAlignment: MainAxisAlignment.center,
-    children: const [
-      const ThreeDotLoader(),
+    children: [
+      ThreeDotLoader(),
       SizedBox(height: 16),
     ],
   ),

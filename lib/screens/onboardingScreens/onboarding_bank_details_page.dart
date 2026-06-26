@@ -14,11 +14,11 @@ class OnboardingBankDetailsPage extends StatefulWidget {
   final String email;
 
   const OnboardingBankDetailsPage({
-    Key? key,
+    super.key,
     required this.token,
     required this.userId,
     required this.email,
-  }) : super(key: key);
+  });
 
   @override
   State<OnboardingBankDetailsPage> createState() =>
@@ -193,7 +193,7 @@ class _OnboardingBankDetailsPageState extends State<OnboardingBankDetailsPage>
             child: _isLoading
                 ? const Center(child: ThreeDotLoader(color: Colors.white))
                 : _bankDetails == null
-                    ? Center(
+                    ? const Center(
                         child: Text(
                           "Failed to load Stripe details",
                           style: TextStyle(color: Colors.redAccent),

@@ -24,14 +24,14 @@ class OnboardingBackgroundPage extends StatefulWidget {
   final PageController? controller;
 
   const OnboardingBackgroundPage({
-    Key? key,
+    super.key,
     required this.userId,
     required this.token,
     required this.username,
     this.selectedCountry,
     this.onBackgroundSaved,
     this.controller,
-  }) : super(key: key);
+  });
 
   @override
   _OnboardingBackgroundPageState createState() =>
@@ -393,8 +393,7 @@ class _OnboardingBackgroundPageState extends State<OnboardingBackgroundPage> {
             primary: Color(0xFFFF6F6F),
             onPrimary: Colors.white,
             surface: Colors.white,
-          ),
-          dialogBackgroundColor: Colors.white,
+          ), dialogTheme: DialogThemeData(backgroundColor: Colors.white),
         ),
         child: child!,
       ),

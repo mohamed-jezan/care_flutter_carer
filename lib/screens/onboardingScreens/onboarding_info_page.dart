@@ -1,9 +1,3 @@
-// lib/screen/onboarding/OnboardingInfoPage.dart
-//
-// UI updated to match the card-based section pattern used across all
-// onboarding pages (Skills, Background, Identity).
-// All logic is identical to the original — only the build/widget layer changed.
-
 import 'package:call_care/widgets/three_dot_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -21,14 +15,14 @@ class OnboardingInfoPage extends StatefulWidget {
   final Function(String)? onCountrySelected;
 
   const OnboardingInfoPage({
-    Key? key,
+    super.key,
     required this.token,
     required this.userId,
     required this.username,
     this.controller,
     this.onInfoSaved,
     this.onCountrySelected,
-  }) : super(key: key);
+  });
 
   @override
   _OnboardingInfoPageState createState() => _OnboardingInfoPageState();
@@ -806,9 +800,9 @@ class _OnboardingInfoPageState extends State<OnboardingInfoPage>
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
       child: DropdownSearch<String>(
-        popupProps: PopupProps.menu(
+        popupProps: const PopupProps.menu(
           showSearchBox: true,
-          searchFieldProps: const TextFieldProps(
+          searchFieldProps: TextFieldProps(
             decoration: InputDecoration(
               hintText: 'Search countries...',
               border: OutlineInputBorder(),
@@ -816,7 +810,7 @@ class _OnboardingInfoPageState extends State<OnboardingInfoPage>
                   EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             ),
           ),
-          menuProps: const MenuProps(
+          menuProps: MenuProps(
             borderRadius: BorderRadius.all(Radius.circular(12)),
           ),
         ),

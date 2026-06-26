@@ -23,13 +23,13 @@ class OnboardingIdentityCheckPage extends StatefulWidget {
   final PageController? controller;
 
   const OnboardingIdentityCheckPage({
-    Key? key,
+    super.key,
     required this.token,
     required this.userId,
     required this.username,
     this.onDocumentsSaved,
     this.controller,
-  }) : super(key: key);
+  });
 
   @override
   _OnboardingIdentityCheckPageState createState() =>
@@ -319,7 +319,9 @@ class _OnboardingIdentityCheckPageState
         var docType = doc['document_type'] as String;
 
         if (_selectedCountry != 'United Kingdom' &&
-            docType == 'right to work') continue;
+            docType == 'right to work') {
+          continue;
+        }
 
         final documentNumber =
             (doc['controller'] as TextEditingController).text.trim().isEmpty

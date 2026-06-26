@@ -10,8 +10,8 @@ class EarningsPage extends StatefulWidget {
 class _EarningsPageState extends State<EarningsPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Center(
+    return const Scaffold(
+      body: Center(
         child: Text('No earnings available at the moment.'),
       ),
     );

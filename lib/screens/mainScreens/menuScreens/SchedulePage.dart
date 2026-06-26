@@ -10,8 +10,8 @@ class SchedulePage extends StatefulWidget {
 class _SchedulePageState extends State<SchedulePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Center(
+    return const Scaffold(
+      body: Center(
         child: Text('No schedule available at the moment.'),
       ),
     );

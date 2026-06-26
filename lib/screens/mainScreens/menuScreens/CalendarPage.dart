@@ -10,8 +10,8 @@ class CalendarPage extends StatefulWidget {
 class _CalendarPageState extends State<CalendarPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Center(
+    return const Scaffold(
+      body: Center(
         child: Text('No calendar events available at the moment.'),
       ),
     );

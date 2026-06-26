@@ -10,8 +10,8 @@ class UpdatesPage extends StatefulWidget {
 class _UpdatesPageState extends State<UpdatesPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Center(
+    return const Scaffold(
+      body: Center(
         child: Text('No updates available at the moment.'),
       ),
     );

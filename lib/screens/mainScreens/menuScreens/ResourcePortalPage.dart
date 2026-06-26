@@ -10,8 +10,8 @@ class ResourcePortalPage extends StatefulWidget {
 class _ResourcePortalPageState extends State<ResourcePortalPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Center(
+    return const Scaffold(
+      body: Center(
         child: Text('No resources available at the moment.'),
       ),
     );

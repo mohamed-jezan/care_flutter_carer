@@ -20,14 +20,14 @@ class OnboardingSkillsPage extends StatefulWidget {
   final VoidCallback? onSkillsSaved;
 
   const OnboardingSkillsPage({
-    Key? key,
+    super.key,
     required this.token,
     required this.userId,
     required this.username,
     required this.email,
     this.controller,
     this.onSkillsSaved,
-  }) : super(key: key);
+  });
 
   @override
   _OnboardingSkillsPageState createState() => _OnboardingSkillsPageState();
@@ -480,7 +480,9 @@ final Map<String, String> _skillLabels = {
     if (!_isSkillsSaved ||
         !_isLanguagesSaved ||
         !_isPreferencesSaved ||
-        !_isAvailabilitySaved) return;
+        !_isAvailabilitySaved) {
+      return;
+    }
 
     try {
       String userEmail = widget.email;

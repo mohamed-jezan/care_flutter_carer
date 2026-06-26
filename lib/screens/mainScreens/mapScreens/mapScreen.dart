@@ -18,20 +18,20 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  location_package.Location _locationController = location_package.Location();
+  final location_package.Location _locationController = location_package.Location();
   GoogleMapController? _mapController;
   LatLng? _currentP;
-  Set<Marker> _markers = {};
-  Set<Polyline> _polylines = {};
+  final Set<Marker> _markers = {};
+  final Set<Polyline> _polylines = {};
   bool _isLoading = false;
   MapType _currentMapType = MapType.normal;
   bool _trafficEnabled = true;
-  bool _buildingsEnabled = true;
+  final bool _buildingsEnabled = true;
 
   // Search and selected locations
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   List<Prediction> predictions = [];
-  List<LatLng> _selectedLocations = [];
+  final List<LatLng> _selectedLocations = [];
   int currentRouteIndex = 0;
   bool _isSearchExpanded = false; // Track search bar expansion state
 
@@ -139,12 +139,13 @@ class _MapScreenState extends State<MapScreen> {
                               googleAPIKey: _googleApiKey,
                               inputDecoration: const InputDecoration(
                                 hintText: 'Search for a place...',
-                                hintStyle: TextStyle(color: const Color.fromARGB(255, 255, 126, 126), fontSize: 16, fontWeight: FontWeight.w500),
+                                hintStyle: TextStyle(color: Color.fromARGB(255, 255, 126, 126), fontSize: 16, fontWeight: FontWeight.w500, fontFamily: 'Roboto'),
+                                
                                 border: InputBorder.none,
                                 
                               ),
                               debounceTime: 800,
-                              countries: ["lk"], // Sri Lanka
+                              countries: const ["lk"], // Sri Lanka
                               isLatLngRequired: true,
                               getPlaceDetailWithLatLng: (Prediction prediction) {
                                 _addLocationFromPrediction(prediction);
@@ -325,11 +326,11 @@ class _MapScreenState extends State<MapScreen> {
                           elevation: 0,
                           shadowColor: Colors.transparent,
                         ),
-                        child: Row(
+                        child: const Row(
                           children: [
                             Icon(Icons.stop, size: 20),
-                            const SizedBox(width: 8),
-                            const Text(
+                            SizedBox(width: 8),
+                            Text(
                               'Stop',
                               style: TextStyle(
                                 fontSize: 16,
@@ -347,23 +348,23 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   Future<void> getCurrentLocation() async {
-    bool _serviceEnabled;
-    location_package.PermissionStatus _permissionGranted;
+    bool serviceEnabled;
+    location_package.PermissionStatus permissionGranted;
 
-    _serviceEnabled = await _locationController.serviceEnabled();
-    if (!_serviceEnabled) {
-      _serviceEnabled = await _locationController.requestService();
-      if (!_serviceEnabled) {
+    serviceEnabled = await _locationController.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await _locationController.requestService();
+      if (!serviceEnabled) {
         // User denied enabling location services
         _showLocationError("Location services are required for navigation. Please enable location services.");
         return;
       }
     }
 
-    _permissionGranted = await _locationController.hasPermission();
-    if (_permissionGranted == location_package.PermissionStatus.denied) {
-      _permissionGranted = await _locationController.requestPermission();
-      if (_permissionGranted != location_package.PermissionStatus.granted) {
+    permissionGranted = await _locationController.hasPermission();
+    if (permissionGranted == location_package.PermissionStatus.denied) {
+      permissionGranted = await _locationController.requestPermission();
+      if (permissionGranted != location_package.PermissionStatus.granted) {
         _showLocationError("Location permission is required for navigation. Please grant location permission.");
         return;
       }
@@ -414,10 +415,10 @@ class _MapScreenState extends State<MapScreen> {
     if (_currentP != null) {
       _markers.add(
         Marker(
-          markerId: MarkerId('_currentLocation'),
+          markerId: const MarkerId('_currentLocation'),
           icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
           position: _currentP!,
-          infoWindow: InfoWindow(title: 'Your Location'),
+          infoWindow: const InfoWindow(title: 'Your Location'),
         ),
       );
     }
@@ -557,7 +558,7 @@ class _MapScreenState extends State<MapScreen> {
         ],
       ),
       child: IconButton(
-        icon: Icon(Icons.explore, color: const Color.fromARGB(255, 255, 126, 126), size: 28),
+        icon: const Icon(Icons.explore, color: Color.fromARGB(255, 255, 126, 126), size: 28),
         onPressed: _resetBearing,
         tooltip: 'Reset Bearing (North)',
         padding: EdgeInsets.zero,
@@ -595,7 +596,7 @@ class _MapScreenState extends State<MapScreen> {
         markerId: MarkerId('selected_$index'),
         position: position,
         infoWindow: InfoWindow(
-          title: 'Destination ${index}',
+          title: 'Destination $index',
           snippet: 'Tap to remove',
         ),
         icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),

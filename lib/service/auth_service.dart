@@ -63,7 +63,7 @@ class ApiService {
         if (otpResponse['success']) {
           return {
             "success": true,
-            "message": 'Registration successful, OTP sent to ${phone}',
+            "message": 'Registration successful, OTP sent to $phone',
           };
         } else {
           return {

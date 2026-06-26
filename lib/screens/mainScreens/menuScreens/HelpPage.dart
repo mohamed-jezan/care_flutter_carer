@@ -10,8 +10,8 @@ class HelpPage extends StatefulWidget {
 class _HelpPageState extends State<HelpPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Center(
+    return const Scaffold(
+      body: Center(
         child: Text('No help available at the moment.'),
       ),
     );

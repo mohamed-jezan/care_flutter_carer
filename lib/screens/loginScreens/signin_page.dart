@@ -68,7 +68,7 @@ class _SignInPageState extends State<SignInPage> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (_) => HomeScreen(
+        builder: (_) => const HomeScreen(
           
         ),
       ),
@@ -77,7 +77,7 @@ class _SignInPageState extends State<SignInPage> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (_) => AwaitingVerificationPage(),
+            builder: (_) => const AwaitingVerificationPage(),
           ),
         );
       }
@@ -167,7 +167,7 @@ Future<void> _handleLogin() async {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (_) => HomeScreen(
+          builder: (_) => const HomeScreen(
            
           ),
         ),

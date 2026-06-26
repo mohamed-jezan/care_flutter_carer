@@ -5,10 +5,10 @@ class AwaitingVerificationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: EdgeInsets.all(24),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
